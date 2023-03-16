@@ -8,20 +8,22 @@ function mergeSort(arr) {
     return merge(mergeSort(leftArr), mergeSort(rightArr))
 }
 
-function merge(leftArr, rightArr){
+function merge(leftArr, rightArr) {
     const sortedArr = []
-    while(leftArr.length && rightArr.length){
-        if (leftArr[0]<=rightArr[0]){
+    while (leftArr.length && rightArr.length) {
+        if (leftArr[0] <= rightArr[0]) {
             sortedArr.push(leftArr.shift())
         }
-        else{
+        else {
             sortedArr.push(rightArr.shift())
         }
     }
-    return [...sortedArr,...leftArr,...rightArr]
+    return [...sortedArr, ...leftArr, ...rightArr]
 }
 
 
-const arr = [8,20,-2,6,15]
+const arr = [8, 20, -2, 6, 15]
 
 console.log(mergeSort(arr))
+
+// bigO(nlogn)
