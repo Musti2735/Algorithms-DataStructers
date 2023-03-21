@@ -41,16 +41,16 @@ class LinkedList {
         this.size++
     }
 
-    insert(value, index){
-        if(index < 0 || index > this.size()){
+    insert(value, index) {
+        if (index < 0 || index > this.size()) {
             return null
         }
-        if(index ===0){
+        if (index === 0) {
             return this.prepend()
-        }else{
+        } else {
             let prev = this.head
             const node = new Node()
-            for(let i=0; i<index-1; i++){
+            for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
             node.next = prev.next
@@ -59,17 +59,17 @@ class LinkedList {
         }
     }
 
-    removedNode(index){
-        if(index < 0 || index >= this.size()){
+    removedNode(index) {
+        if (index < 0 || index >= this.size) {
             return null
         }
         let removedNode;
-        if(index ===0){
+        if (index === 0) {
             removedNode = this.head
             this.head = this.head.next
-        }else{
+        } else {
             let prev = this.head
-            for(let i =0 ; i< index-1; i++){
+            for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
             removedNode = prev.next
@@ -77,6 +77,39 @@ class LinkedList {
         }
         this.size--
         return removedNode.value
+    }
+    removeValue(value) {
+        if (this.isEmpty) {
+            null
+        }
+        if (this.head.value === value) {
+            this.head = this.head.next
+            this.size--
+            return value
+        } else {
+            let prev = this.head
+            while (prev.next && prev.next.value !== value) {
+                const removedNode = prev.next
+                prev.next = removedNode.next
+                this.size--
+                return value
+            }
+        }
+    }
+    search(value){
+        if(this.isEmpty()){
+            return -1
+        }
+        let i = 0 
+        let curr = this.head
+        while(curr){
+            if(curr.value === value){
+                return i
+            }
+            curr = curr.next
+            i ++
+        }
+        return -1
     }
 
     print() {
@@ -100,6 +133,5 @@ list.prepend(20)
 list.print()
 list.prepend(30)
 list.print()
-list.append(5)
-
-list.print()
+console.log(list.search(12))
+console.log(list.search(10))
