@@ -115,3 +115,6 @@ list.removeFromFront();
 list.print();
 list.removeFromEnd();
 list.print();
+
+
+export default LinkedList;
